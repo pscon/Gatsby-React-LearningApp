@@ -54,7 +54,7 @@ const Copyright = styled.div`
     padding: 0 20px;
 `
 
-function Footer({data, children}) {
+function Footer({ children}) {
   return (
     <FooterGroup>
     <Text>Tweet “Mobile Application process, Introduction to cordova and Ionic. New courses by @pscon”</Text>
