@@ -1,42 +1,51 @@
-import * as React from "react"
+// import * as React from "react"
+import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import Logo from "../images/logo-designcode.svg"
+import "./header.css"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+function Header() {
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+const [scrolled, setScrolled]= useState(false);
+
+//change state on scroll
+useEffect(()=>{
+  const handleScroll = () =>{
+    const isScrollrd = window.scrollY 
+if (isScrollrd > 50){
+setScrolled(true);
+}else{
+  setScrolled(false);
 }
+  };
+  window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+}, []);
 
-Header.defaultProps = {
-  siteTitle: ``,
+
+
+
+  return (
+
+    // if it scroll i.e (true) give it classname of headerscrolled of not header 
+    <div className={scrolled ? "Header HeaderScrolled" : "Header"}>
+      <div className="HeaderGroup">
+        <Link to="/">
+          <img src={Logo} alt="" width30></img>
+        </Link>
+        <Link to="/#">Courses</Link>
+        <Link to="/#">Downloads</Link>
+        <Link to="/#">Workshop</Link>
+        <Link to="/#">
+          {" "}
+          <button>Buy</button>
+        </Link>
+      </div>
+    </div>
+  )
 }
 
 export default Header

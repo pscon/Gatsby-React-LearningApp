@@ -1,13 +1,22 @@
 module.exports = {
   siteMetadata: {
     title: `Pscon Web Design`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+
+    description: 'Complete courses about the best tools and design systems. Prototype and build apps with React and Swift. 60 hours of video content and resource materials. No coding experience required.',
+    keywords: 'react course, react for designers, ios development, sketch app, swift app course, arkit 2, after effects, create sketch plugin',
+    author: `Pscon`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: '0ge8xzmnbp2c',
+        accessToken: 'b3b275d4fda32085546b9100cb9ae7cb8796fdddd462fd42ba53c4c17bf2f99d'
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
